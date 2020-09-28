@@ -28,12 +28,7 @@ normal=$(tput sgr0)
 BASEDIR="$PWD"/$(dirname $0)
 SCRIPTNAME=$(basename $0)
 
-NTL_version='11.4.3'
-
-HElib_version='v1.0.2'
-
-Boost_version='1.72.0'
-Boost_filename='1_72_0'
+source ConfigConstants.sh
 
 # z/OS Container Extensions platform CURL implementation does not work as expected. If zCX platform detected, add flag to adjust.
 # adding -k option to curl commands on zCX else the string stays empty
@@ -366,15 +361,25 @@ fi
 # Clean up temporary containers
 #
 docker rmi $HElib_tag
+if [ $? -ne 0 ]
+then
+  echo " "
+  echo " WARNING: Failed to Remove $HElib_tag"
+  echo " Please check for matching docker image below."
+  docker images --all
+  echo " "
+fi
 docker rmi $PlatformRelease
 if [ $? -ne 0 ]
 then
   echo " "
-  echo " Failed to Build Base Environment. Build aborted."
-  echo " Please check for error messages above."
+  echo " WARNING: Failed to Remove $PlaformRelease"
+  echo " Please check for matching docker image below."
+  docker images --all
   echo " "
-  exit -13
 fi
+#Throwing in test comment so it forces rebuild
+#makeing other change so it shows somethning is differetn
 
 echo "==============================================================="
 echo ""
