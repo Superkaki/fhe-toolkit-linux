@@ -38,7 +38,7 @@ RUN mkdir -p /opt/IBM/FHE-Workspace/examples
 RUN cp -rp /opt/IBM/FHE-distro/HElib/examples /opt/IBM/FHE-Workspace
 
 # Copy over additional examples into the FHE-Workspace from the github checkout on this host
-COPY --chown=fhe:fhe ./samples/ /opt/IBM/FHE-Workspace/examples/
+COPY --chown=fhe:fhe ./samples/ /opt/IBM/FHE-Workspace/examples
 
 # Install VSCode extensions
 RUN code-server --user-data-dir=/opt/IBM/IDE-Data/ --install-extension ms-vscode.cmake-tools --force
