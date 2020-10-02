@@ -239,7 +239,7 @@ int main(int argc, char* argv[])
 
   // Read in query from the command line
   std::string query_string;
-  std::cout << "\nPlease enter the name of an European Country: ";
+  std::cout << "\nPlease enter the name of a Country: ";
   // std::cin >> query_string;
   std::getline(std::cin, query_string);
   std::cout << "Looking for the Capital of " << query_string << std::endl;
