@@ -43,7 +43,7 @@ remove_toolkit
 H_FILES='.h'
 CPP_FILES='.cpp'
 GIT_LOG=$(git log --since="24 hours ago" --name-only)
-echo $GIT_LOG
+#echo $GIT_LOG
 COMMIT_NUMBER=$(git log -1 --pretty=format:"%h")
 
 #Check to see if the .h files or the .cpp files were changed recently otherwise do nothing
@@ -64,6 +64,8 @@ if [[ "$GIT_LOG" == *"$H_FILES"* || "$GIT_LOG" == *"$CPP_FILES"* ]]; then
 else
     echo "NO CHANGES TO CODE SO NO Need to REGENEATE DOCS"
 fi
+
+git reset --hard origin/master
 
 
 
