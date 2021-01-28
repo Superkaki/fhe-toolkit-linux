@@ -24,7 +24,7 @@
 # SOFTWARE.
 
 # Navigate to the top level of the Repo
-pushd `git rev-parse --show-toplevel`
+cd ../../
 pwd
 set -x 
 set -u
